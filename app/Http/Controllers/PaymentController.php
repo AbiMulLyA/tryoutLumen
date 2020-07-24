@@ -56,7 +56,7 @@ class PaymentController extends Controller
         Config::$is3ds = true;
 
         $product_list = [];
-        $product_order = $this->get_data_product(23);
+        $product_order = $this->get_data_product(3);
         for($i=0; $i < count($product_order); $i++)
         {
             $product_list['id'] = $product_order[$i]['id'];
@@ -66,7 +66,7 @@ class PaymentController extends Controller
         }
         return $product_list;
 
-        $customer_details = $this->get_data_customer(23);
+        $customer_details = $this->get_data_customer(1);
         $customer_details = array(
             'first_name'    => $customer_details->fullname,
             'last_name'     => "",
