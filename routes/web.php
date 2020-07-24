@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 
 // });
 $router->get('/', function () use ($router) {
-    return "Welcome to My Open API.. Please Visit this API Documentation URL to Request Data <br> <a href='https://documenter.getpostman.com/view/11494339/T1DpAwyK'>https://documenter.getpostman.com/view/11494339/T1DpAwyK</a>";
+    return "Sedang Masa Pengembangan";
 });
 $router->group(['middleware'=>'auth'], function() use ($router){
     $router->group(['prefix'=> 'api/v1'], function() use ($router){
@@ -41,7 +41,7 @@ $router->group(['middleware'=>'auth'], function() use ($router){
         $router->put('order/{id}', 'orderController@put'); 
         $router->delete('order/{id}', 'orderController@delete'); 
     
-        // $router->get('post','PostController@getDataPost');
+        $router->post('payment','PaymentController@create');
         // $router->get('post/all','PostController@getAll');
         // $router->get('post/{id}','PostController@getDataByPostId');
         // $router->post('post', 'PostController@create');
