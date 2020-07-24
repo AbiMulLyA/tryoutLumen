@@ -50,7 +50,7 @@ class OrderController extends Controller
         $request_order = $request->all();
         $data = new Order();
         $data->user_id = $request_order['data']['attributes']['user_id'];
-        $data->status = "created";
+        $data->order_status = "created";
         $data->save();
 
         $order_detail = $request_order['data']['attributes']['order_detail'];
