@@ -17,6 +17,7 @@ class CreateOrderItems extends Migration
             $table->bigIncrements('id');
             $table->integer('order_id')->unsigned();
             $table->integer('product_id')->unsigned();
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

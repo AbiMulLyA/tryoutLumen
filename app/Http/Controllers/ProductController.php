@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Customer;
+use App\Product;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
-class CustomerController extends Controller
+class ProductController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -17,7 +17,7 @@ class CustomerController extends Controller
     }
     
     public function getAll(){
-        $data = Customer::all();
+        $data = Product::all();
         if(!$data){
             return response()->json([
                 "Status" => "Data Not Found"
@@ -29,8 +29,8 @@ class CustomerController extends Controller
             "datas" => $data
         ]);
     }
-    public function getCustomerById($id){
-        $data = Customer::find($id);
+    public function getProductById($id){
+        $data = Product::find($id);
         // $data = Customer::where('id',$id);
         if(!$data){
             return response()->json([
@@ -46,11 +46,9 @@ class CustomerController extends Controller
 
 
     public function create(Request $request){
-        $data = new Customer();
-        $data->full_name = $request->input("data.attributes.full_name");
-        $data->username = $request->input("data.attributes.username");
-        $data->email = $request->input("data.attributes.email");
-        $data->phone_number = $request->input("data.attributes.phone_number");
+        $data = new Product();
+        $data->name = $request->input("data.attributes.name");
+        $data->price = $request->input("data.attributes.price");
         $data->save();
 
         return response()->json([
@@ -61,12 +59,10 @@ class CustomerController extends Controller
     }
 
     public function put(Request $request, $id){
-        $data = Customer::find($id);
+        $data = Product::find($id);
         if ($data) {
-            $data->full_name = $request->input("data.attributes.full_name");
-            $data->username = $request->input("data.attributes.username");
-            $data->email = $request->input("data.attributes.email");
-            $data->phone_number = $request->input("data.attributes.phone_number");
+            $data->name = $request->input("name");
+            $data->price = $request->input("price");
             $data->save();
 
             return response()->json([
@@ -81,7 +77,7 @@ class CustomerController extends Controller
         }
     }
     public function Delete(Request $request, $id){
-        $data = Customer::find($id);
+        $data = Product::find($id);
         if($data) {
             $data->delete();
             return response()->json([

@@ -24,7 +24,19 @@ $router->group(['middleware'=>'auth'], function() use ($router){
         $router->get('customer/{id}','CustomerController@getCustomerById');
         $router->post('customer', 'CustomerController@create');
         $router->put('customer/{id}', 'CustomerController@put'); 
-        $router->delete('customer/{id}', 'CustomerController@delete'); 
+        $router->delete('customer/{id}', 'CustomerController@delete');
+
+        $router->get('product','ProductController@getAll');
+        $router->get('product/{id}','ProductController@getProductById');
+        $router->post('product', 'ProductController@create');
+        $router->put('product/{id}', 'ProductController@put'); 
+        $router->delete('product/{id}', 'ProductController@delete');
+
+        $router->get('order','orderController@getAll');
+        $router->get('order/{id}','orderController@getorderById');
+        $router->post('order', 'orderController@create');
+        $router->put('order/{id}', 'orderController@put'); 
+        $router->delete('order/{id}', 'orderController@delete'); 
     
         // $router->get('post','PostController@getDataPost');
         // $router->get('post/all','PostController@getAll');
