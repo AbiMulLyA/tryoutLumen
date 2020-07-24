@@ -17,6 +17,9 @@ use Illuminate\Http\Request;
 
 
 // });
+$router->get('/', function () use ($router) {
+    return "Welcome to My Open API.. Please Visit this API Documentation URL to Request Data <br> <a href='https://documenter.getpostman.com/view/11494339/T1DpAwyK'>https://documenter.getpostman.com/view/11494339/T1DpAwyK</a>";
+});
 $router->group(['middleware'=>'auth'], function() use ($router){
     $router->group(['prefix'=> 'api/v1'], function() use ($router){
         $router->get("/coba", "MidtransController@getSnapToken");
