@@ -35,11 +35,11 @@ $router->group(['middleware'=>'auth'], function() use ($router){
         $router->put('product/{id}', 'ProductController@put'); 
         $router->delete('product/{id}', 'ProductController@delete');
 
-        $router->get('order','orderController@getAll');
-        $router->get('order/{id}','orderController@getorderById');
-        $router->post('order', 'orderController@create');
-        $router->put('order/{id}', 'orderController@put'); 
-        $router->delete('order/{id}', 'orderController@delete'); 
+        $router->get('order','OrderController@getAll');
+        $router->get('order/{id}','OrderController@getorderById');
+        $router->post('order', 'OrderController@create');
+        $router->put('order/{id}', 'OrderController@put'); 
+        $router->delete('order/{id}', 'OrderController@delete'); 
     
         $router->post('payment','PaymentController@create');
         // $router->get('post/all','PostController@getAll');
