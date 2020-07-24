@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Payments;
-use App\Orders;
-use App\Customers;
+use App\Payment;
+use App\Order;
+use App\Customer;
 use App\OrderItem;
 
 use App\Http\Controllers\Midtrans\Config;
@@ -40,8 +40,8 @@ class PaymentController extends Controller
     }
     public function get_data_customer($order_id)
     {
-        $orders = Orders::find($order_id);
-        $customer = Customers::find($orders->user_id);
+        $orders = Order::find($order_id);
+        $customer = Customer::find($orders->user_id);
 
         return $customer;
     }
