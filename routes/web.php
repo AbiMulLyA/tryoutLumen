@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,6 +12,33 @@
 |
 */
 
-$router->group(['middleware' => 'auth'], function () use ($router) {
-    $router->get("/coba", "MidtransController@getSnapToken");
+// $router->group(['middleware' => 'auth'], function () use ($router) {
+//     $router->get("/coba", "MidtransController@getSnapToken");
+
+
+// });
+$router->group(['middleware'=>'auth'], function() use ($router){
+    $router->group(['prefix'=> 'api/v1'], function() use ($router){
+        $router->get("/coba", "MidtransController@getSnapToken");
+        $router->get('customer','CustomerController@getAll');
+        $router->get('customer/{id}','CustomerController@getCustomerById');
+        $router->post('customer', 'CustomerController@create');
+        $router->put('customer/{id}', 'CustomerController@put'); 
+        $router->delete('customer/{id}', 'CustomerController@delete'); 
+    
+        // $router->get('post','PostController@getDataPost');
+        // $router->get('post/all','PostController@getAll');
+        // $router->get('post/{id}','PostController@getDataByPostId');
+        // $router->post('post', 'PostController@create');
+        // $router->patch('post/{id}', 'PostController@patch');
+        // $router->delete('post/{id}', 'PostController@delete');
+    
+        // $router->get('comment','CommentController@getDataComment');
+        // $router->get('comment/all','CommentController@getAll');
+        // $router->get('comment/{id}','CommentController@getDataByCommentId');
+        // $router->post('comment', 'CommentController@create');
+        // $router->patch('comment/{id}', 'CommentController@patch');
+        // $router->delete('comment/{id}', 'CommentController@delete');
+    });
 });
+?>
